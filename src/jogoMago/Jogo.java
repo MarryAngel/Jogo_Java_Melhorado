@@ -10,16 +10,12 @@ import javax.swing.Timer;
 public class Jogo{
 	private int altJanela=1080*3/5, largJanela=altJanela/9*16;
 	private Janela janela;
-	private Graphics g;
-	private Thread thread;
-	private boolean running = false;
 	private Timer t;
 	
 	public Jogo() {
-		this.janela = new Janela(largJanela, altJanela);
+		this.janela = new Janela(largJanela, altJanela, this);
 		t = new Timer(10, new ActionListener() {
 	    	public void actionPerformed(ActionEvent ae) {
-	    		g = janela.getGraficos();
 	    		tick();
 	    	}
 	    });
@@ -28,14 +24,13 @@ public class Jogo{
 	
 	private void tick()
 	{
-		render();
+		
 	}
 	
-	private void render()
+	public void render(Graphics g)
 	{
 		g.setColor(new Color(0,255,255));
 		g.fillRect(0,0,100,100);
-		janela.reDes();
 	}
 
 	
