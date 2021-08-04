@@ -1,8 +1,6 @@
 package jogoMago;
 
 import java.awt.Dimension;
-import java.awt.Graphics;
-
 import javax.swing.*;
 
 public class Janela extends JFrame{

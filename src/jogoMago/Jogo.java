@@ -9,11 +9,10 @@ import javax.swing.Timer;
 
 public class Jogo{
 	private int altJanela=1080*3/5, largJanela=altJanela/9*16;
-	private Janela janela;
 	private Timer t;
 	
 	public Jogo() {
-		this.janela = new Janela(largJanela, altJanela, this);
+		new Janela(largJanela, altJanela, this);
 		t = new Timer(10, new ActionListener() {
 	    	public void actionPerformed(ActionEvent ae) {
 	    		tick();
