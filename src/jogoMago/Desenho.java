@@ -12,8 +12,11 @@ public class Desenho extends JPanel{
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		System.out.println("redesenhando");
+		g.setColor(new Color(0,255,255));
+		g.fillRect(0,0,100,100);
 		this.graficos=g;
-	    Toolkit.getDefaultToolkit().sync();
+	    //Toolkit.getDefaultToolkit().sync();
 	}
 	
 	public Graphics getGraficos(){

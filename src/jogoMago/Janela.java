@@ -17,12 +17,18 @@ public class Janela extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		add(des);                           
 		pack();				       	    
-		setVisible(true);                
+		setVisible(true);
+		des.repaint();
 	}
 	
 	public Graphics getGraficos()
 	{
 		return des.getGraficos();
+	}
+
+	public void reDes() {
+		des.repaint();
+		
 	}
 	
 }

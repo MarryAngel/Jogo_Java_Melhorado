@@ -1,39 +1,43 @@
 package jogoMago;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Jogo implements Runnable{
+import javax.swing.Timer;
+
+public class Jogo{
 	private int altJanela=1080*3/5, largJanela=altJanela/9*16;
-	private Janela janela = null;
-	private Graphics g = null;
+	private Janela janela;
+	private Graphics g;
 	private Thread thread;
 	private boolean running = false;
+	private Timer t;
 	
 	public Jogo() {
 		this.janela = new Janela(largJanela, altJanela);
-		g = janela.getGraficos();
-		
+		t = new Timer(10, new ActionListener() {
+	    	public void actionPerformed(ActionEvent ae) {
+	    		g = janela.getGraficos();
+	    		tick();
+	    	}
+	    });
+		t.start();
 	}
 	
-	public synchronized void start(){
-		thread = new Thread(this);
-		thread.start();
-		running=true;
+	private void tick()
+	{
+		render();
 	}
 	
-	public synchronized void stop(){
-		try{
-			thread.join();
-			running=false;
-			
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
+	private void render()
+	{
+		g.setColor(new Color(0,255,255));
+		g.fillRect(0,0,100,100);
+		janela.reDes();
 	}
 
-	public void run() {
-		
-	}
+	
 	
 }
