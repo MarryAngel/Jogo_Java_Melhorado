@@ -13,8 +13,6 @@ public class Desenho extends JPanel{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		this.graficos=g;
-		g.setColor(new Color(110,110,110)); 
-	    g.fillRect(10, 20, 400, 50);
 	    Toolkit.getDefaultToolkit().sync();
 	}
 	
