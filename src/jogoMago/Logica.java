@@ -10,15 +10,14 @@ public class Logica {
 	 public void clicar(char botao) {
 		 switch(botao) {
 		 case 'D':
-			 System.out.println("apertei D");
 			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()+10);
 			 break;
 		 case 'A':
-			 System.out.println("apertei A");
 			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()-10);
 			 break;
 		 case 'W':
 			 System.out.println("apertei W");
+			 manipulador.getJogador().setVelY(-20);
 			 break;
 		 case 'S':
 			 System.out.println("apertei S");

@@ -7,7 +7,7 @@ import java.io.IOException;
 public abstract class Objetos {
 	protected int x, y;
 	protected int velx, vely;
-	protected final int gravidade=10;
+	protected final int gravidade=2;
 	protected int largura, altura;
 	protected boolean invertido=false;
 	protected String nome;
