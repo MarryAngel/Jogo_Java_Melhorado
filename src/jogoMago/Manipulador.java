@@ -14,8 +14,8 @@ public class Manipulador{
 		this.altJanela=altJanela;
 		objJogo.add(new Fundo(0,0,largJanela,altJanela, this));
 		//Criando os jogadores
-		jogador = new Mago(400, 400, largJanela*100/305/2, altJanela*100/158/2, "Fogo", this);
-		adversario = new Mago(600, 400, largJanela*100/305/2, altJanela*100/158/2, "Gelo", this);
+		jogador = new Mago(400, 100, largJanela*100/305/2, altJanela*100/158/2, "Fogo", this);
+		adversario = new Mago(600, 100, largJanela*100/305/2, altJanela*100/158/2, "Gelo", this);
 		//Adicionando os jogadores ao jogo por meio de uma lista
 		objJogo.add(jogador);
 		objJogo.add(adversario);

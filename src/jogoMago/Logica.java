@@ -13,7 +13,7 @@ public class Logica {
 			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()+10);
 			 break;
 		 case 'A':
-			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()-10);
+			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()-20);
 			 break;
 		 case 'W':
 			 System.out.println("apertei W");
@@ -36,7 +36,7 @@ public class Logica {
 			 break;
 		 case 'A':
 			 System.out.println("soltei A");
-			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()+10);
+			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()+20);
 			 break;
 		 case 'W':
 			 System.out.println("soltei W");

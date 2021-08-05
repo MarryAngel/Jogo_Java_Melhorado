@@ -7,7 +7,7 @@ import java.io.IOException;
 public abstract class Objetos {
 	protected int x, y;
 	protected int velx, vely;
-	protected final int gravidade=2;
+	protected final int gravidade=1;
 	protected int largura, altura;
 	protected boolean invertido=false;
 	protected String nome;
@@ -33,7 +33,7 @@ public abstract class Objetos {
 	
 	public void tick() {
 		this.x=FuncoesAuxiliares.prendedor(this.x+this.velx, 0, this.manipulador.getLargura()-this.largura);
-		this.y=FuncoesAuxiliares.prendedor(this.y+this.vely, 0, this.manipulador.getAltura()-this.altura-39);
+		this.y=FuncoesAuxiliares.prendedor(this.y+this.vely, 0, this.manipulador.getAltura()-this.altura-37);
 		this.vely+=gravidade;
 	}
 	

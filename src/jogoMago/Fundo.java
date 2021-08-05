@@ -11,4 +11,6 @@ public class Fundo extends Objetos{
 		this.frame=0;
 		this.manipulador=manipulador;
 	}
+	
+	public void tick() {}
 }
