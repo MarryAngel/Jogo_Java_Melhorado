@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.io.IOException;
 
 public abstract class Objetos {
+	protected int contador=0;
 	protected int x, y;
 	protected int velx, vely;
 	protected final int gravidade=1;
@@ -14,6 +15,8 @@ public abstract class Objetos {
 	protected String estado;
 	protected int frame;
 	protected Manipulador manipulador;
+	protected int frameMax=4;
+	protected int velocidadeAnimacao = 6;
 	
 	private Image getImage(){
 		try {
@@ -35,6 +38,9 @@ public abstract class Objetos {
 		this.x=FuncoesAuxiliares.prendedor(this.x+this.velx, 0, this.manipulador.getLargura()-this.largura);
 		this.y=FuncoesAuxiliares.prendedor(this.y+this.vely, 0, this.manipulador.getAltura()-this.altura-37);
 		this.vely+=gravidade;
+		if(contador==0)
+			this.frame=FuncoesAuxiliares.ciclo(this.frame, frameMax);
+		this.contador=FuncoesAuxiliares.ciclo(this.contador, velocidadeAnimacao);
 	}
 	
 	public int getVelX() {return this.velx;}
@@ -46,5 +52,10 @@ public abstract class Objetos {
 	public void setVelY(int vely) {this.vely=vely;}
 	
 	public void setDir(boolean esquerda) {this.invertido=esquerda;}
+	
+	public void setEstado(String estado) {
+		this.estado = estado;
+		this.contador=0;
+	}
 	
 }

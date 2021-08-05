@@ -13,5 +13,4 @@ public class Fundo extends Objetos{
 	}
 	
 	public void tick() {}
-
 }
