@@ -11,33 +11,32 @@ public class Jogo
 {
 	private int altJanela=1080*3/5, largJanela=altJanela/9*16;
 	private Timer t;
-	private int x=0,y=0;
 	private Janela janela;
 	private Manipulador manipulador;
+	private Logica logica;
 	
 	public Jogo(){
+		this.manipulador = new Manipulador(largJanela, altJanela);
+		this.logica = new Logica(this.manipulador);
 		this.janela = new Janela(largJanela, altJanela, this);
+		this.janela.addKeyListener(new Entradas(logica));
+		
 		t = new Timer(10, new ActionListener() {
 	    	public void actionPerformed(ActionEvent ae) {
 	    		tick();
 	    	} 	
 	    });
 		t.start();
-		this.manipulador = new Manipulador(largJanela, altJanela);
-		
 	}
 	
 	private void tick(){
-		x++;
-		y++;
 		this.manipulador.tick();
 		this.janela.repaint();
 	}
 	
 	public void render(Graphics g){
 		this.manipulador.render(g);
-		g.setColor(new Color(0,255,255));
-		g.fillRect(x,y,100,100);
+		
 	}
 
 }
