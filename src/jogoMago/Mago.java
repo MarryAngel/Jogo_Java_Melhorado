@@ -18,20 +18,15 @@ public class Mago extends Objetos{
 	
 	public void tick() {
 		super.tick();
-		
+		this.analizarEstado();
 	}
 	
-	public void setVelX(int velx) {
-		if(this.velx*velx<0)
+	private void analizarEstado()
+	{
+		if(this.velx != 0)
 		{
-			if(velx<0)
-				this.invertido=true;
-			else
-				this.invertido = false;
+			this.setEstado("Anda");
 		}
-		super.setVelX(velx);
-		
-		
 	}
 	
 }

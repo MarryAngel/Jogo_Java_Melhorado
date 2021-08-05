@@ -54,6 +54,8 @@ public abstract class Objetos {
 	public void setDir(boolean esquerda) {this.invertido=esquerda;}
 	
 	public void setEstado(String estado) {
+		if(estado == this.estado)
+			return;
 		this.estado = estado;
 		this.contador=0;
 	}

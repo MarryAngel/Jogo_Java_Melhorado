@@ -12,12 +12,10 @@ public class Logica {
 		 case 'D':
 			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()+10);
 			 manipulador.getJogador().setDir(false);
-			 manipulador.getJogador().setEstado("Corre");
 			 break;
 		 case 'A':
 			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()-10);
 			 manipulador.getJogador().setDir(true);
-			 manipulador.getJogador().setEstado("Corre");
 			 break;
 		 case 'W':
 			 manipulador.getJogador().setVelY(-20);
