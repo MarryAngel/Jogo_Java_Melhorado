@@ -11,9 +11,11 @@ public class Logica {
 		 switch(botao) {
 		 case 'D':
 			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()+10);
+			 manipulador.getJogador().setDir(false);
 			 break;
 		 case 'A':
 			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()-10);
+			 manipulador.getJogador().setDir(true);
 			 break;
 		 case 'W':
 			 manipulador.getJogador().setVelY(-20);
@@ -26,9 +28,11 @@ public class Logica {
 			 break;
 		 case 'd':
 			 manipulador.getAdversario().setVelX(manipulador.getAdversario().getVelX()+10);
+			 manipulador.getAdversario().setDir(false);
 			 break;
 		 case 'a':
 			 manipulador.getAdversario().setVelX(manipulador.getAdversario().getVelX()-10);
+			 manipulador.getAdversario().setDir(true);
 			 break;
 		 case 'w':
 			 manipulador.getAdversario().setVelY(-20);

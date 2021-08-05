@@ -45,4 +45,6 @@ public abstract class Objetos {
 	
 	public void setVelY(int vely) {this.vely=vely;}
 	
+	public void setDir(boolean esquerda) {this.invertido=esquerda;}
+	
 }
