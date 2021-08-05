@@ -22,11 +22,15 @@ public abstract class Objetos {
 		}
 	}
 	
-	public void render(Graphics g)
-	{
+	public void render(Graphics g){
 		if(invertido)
 			g.drawImage(this.getImage(), this.x+largura, this.y, -largura, altura, null);
 		else
 			g.drawImage(this.getImage(), this.x, this.y, largura, altura, null);
 	}
+	
+	public void tick() {
+		
+	}
+	
 }
