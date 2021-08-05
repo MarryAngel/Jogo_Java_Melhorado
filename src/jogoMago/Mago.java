@@ -21,4 +21,17 @@ public class Mago extends Objetos{
 		
 	}
 	
+	public void setVelX(int velx) {
+		if(this.velx*velx<0)
+		{
+			if(velx<0)
+				this.invertido=true;
+			else
+				this.invertido = false;
+		}
+		super.setVelX(velx);
+		
+		
+	}
+	
 }
