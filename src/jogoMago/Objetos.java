@@ -18,7 +18,7 @@ public abstract class Objetos {
 	protected int frameMax=4;
 	protected int velocidadeAnimacao = 6;
 	
-	private Image getImage(){
+	protected Image getImage(){
 		try {
 			return Organizador.getImagem(nome,estado,frame);
 		} catch (IOException e) {

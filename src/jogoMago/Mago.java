@@ -1,5 +1,7 @@
 package jogoMago;
 
+import java.awt.Graphics;
+
 public class Mago extends Objetos{
 	
 	
@@ -14,6 +16,13 @@ public class Mago extends Objetos{
 		this.manipulador=manipulador;
 		if(tipo=="Gelo")
 			this.invertido=true;
+	}
+	
+	public void render(Graphics g){
+		if(invertido)
+			g.drawImage(this.getImage(), this.x+largura, this.y, -this.getImage().getWidth(null)/2, this.getImage().getHeight(null)/2, null);
+		else
+			g.drawImage(this.getImage(), this.x, this.y, this.getImage().getWidth(null)/2,  this.getImage().getHeight(null)/2, null);
 	}
 	
 	public void tick() {
@@ -51,31 +60,26 @@ public class Mago extends Objetos{
 			this.frame = 4;
 		}
 	}
-	public void pular()
-	{
-		if(this.estado != "Pula")
-		{
+	public void pular(){
+		if(this.estado != "Pula"){
 			this.velocidadeAnimacao=12;
 			setVelY(-20);
 			setEstado("Pula");
 		}
 	}
 	
-	public void abaixar()
-	{
+	public void abaixar(){
 		if(this.estado != "Ataque")
 			this.setEstado("Abaixado");
 	}
 	
-	public void levantar()
-	{
+	public void levantar(){
 		if(this.estado != "Ataque")
 			this.setEstado("Parado");
 	}
 	
-	public void atacar()
-	{
-		this.frameMax = 6;
+	public void atacar(){
+		this.frameMax = 5;
 		this.setEstado("Ataque");
 	}
 	
