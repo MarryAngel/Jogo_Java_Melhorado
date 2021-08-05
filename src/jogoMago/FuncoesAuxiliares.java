@@ -16,4 +16,6 @@ public abstract class FuncoesAuxiliares {
 		return cicloAtual+1;
 	}
 	
+	
+	
 }

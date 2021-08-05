@@ -5,6 +5,7 @@ import java.awt.Graphics;
 
 public class Mago extends Objetos{
 	private int vidaMago=400;
+	private CaixaColisao colisao;
 	
 	public Mago(int x, int y, int larg, int alt, String tipo, Manipulador manipulador){
 		this.x=x;
@@ -15,6 +16,7 @@ public class Mago extends Objetos{
 		this.estado="Parado";
 		this.frame=0;
 		this.manipulador=manipulador;
+		this.colisao=new CaixaColisao(x, y, largura, altura);
 		if(tipo=="Gelo")
 			this.invertido=true;
 	}
@@ -34,14 +36,14 @@ public class Mago extends Objetos{
 	    	  g.setColor(new Color(255-255*vidaMago/400,200*vidaMago/400,255*vidaMago/400));
 	    	  g.fillRect(this.manipulador.getLargura()-10, 20, -vidaMago, 50);
 	      }
-	        
+	      colisao.render(g);
 	}
 	
 	public void tick() {
 		super.tick();
+		colisao.refazer(x, y, largura, altura);
 		this.analisarEstado();
-		if(this.estado == "Pula")
-		{
+		if(this.estado == "Pula"){
 			if(frame == frameMax)
 				this.setEstado("Parado");
 		}
@@ -88,5 +90,7 @@ public class Mago extends Objetos{
 		this.frameMax = 5;
 		this.setEstado("Ataque");
 	}
+	
+	
 	
 }
