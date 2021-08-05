@@ -1,9 +1,10 @@
 package jogoMago;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Mago extends Objetos{
-	
+	private int vidaMago=400;
 	
 	public Mago(int x, int y, int larg, int alt, String tipo, Manipulador manipulador){
 		this.x=x;
@@ -23,6 +24,17 @@ public class Mago extends Objetos{
 			g.drawImage(this.getImage(), this.x+largura, this.y, -this.getImage().getWidth(null)/2, this.getImage().getHeight(null)/2, null);
 		else
 			g.drawImage(this.getImage(), this.x, this.y, this.getImage().getWidth(null)/2,  this.getImage().getHeight(null)/2, null);
+	      g.setColor(new Color(110,110,110));
+	      if(nome=="Fogo") {
+	    	  g.fillRect(10, 20, 400, 50);
+	    	  g.setColor(new Color(255,130*vidaMago/400,0)); //255,0,0
+	    	  g.fillRect(10, 20, vidaMago, 50);
+	      }else {
+	    	  g.fillRect(this.manipulador.getLargura()-410, 20, 400, 50);
+	    	  g.setColor(new Color(255-255*vidaMago/400,200*vidaMago/400,255*vidaMago/400));
+	    	  g.fillRect(this.manipulador.getLargura()-10, 20, -vidaMago, 50);
+	      }
+	        
 	}
 	
 	public void tick() {
@@ -35,31 +47,25 @@ public class Mago extends Objetos{
 		}
 	}
 	
-	private void analisarEstado()
-	{
-		if(this.estado == "Anda" || this.estado == "Parado")
-		{
-			if(this.velx != 0)
-			{
+	private void analisarEstado(){
+		if(this.estado == "Anda" || this.estado == "Parado"){
+			if(this.velx != 0){
 				this.setEstado("Anda");
-			}
-			else
-			{
+			}else{
 				this.setEstado("Parado");
 			}
 		}
-		if(this.estado=="Abaixado" && this.frame == this.frameMax)
-		{
+		if(this.estado=="Abaixado" && this.frame == this.frameMax){
 			this.contador=velocidadeAnimacao;
 		}
 		
-		if(this.estado=="Ataque" && this.frame == this.frameMax && this.contador == this.velocidadeAnimacao)
-		{
+		if(this.estado=="Ataque" && this.frame == this.frameMax && this.contador == this.velocidadeAnimacao){
 			this.estado = "Parado";
 			this.frameMax=4;
 			this.frame = 4;
 		}
 	}
+	
 	public void pular(){
 		if(this.estado != "Pula"){
 			this.velocidadeAnimacao=12;
