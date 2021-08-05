@@ -47,11 +47,9 @@ public class Logica {
 		 switch(botao) {
 		 case 'D':
 			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()-10);
-			 manipulador.getJogador().setEstado("Parado");
 			 break;
 		 case 'A':
 			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()+10);
-			 manipulador.getJogador().setEstado("Parado");
 			 break;
 		 case 'W':
 			 System.out.println("soltei W");

@@ -27,6 +27,10 @@ public class Mago extends Objetos{
 		{
 			this.setEstado("Anda");
 		}
+		else
+		{
+			this.setEstado("Parado");
+		}
 	}
 	
 }
