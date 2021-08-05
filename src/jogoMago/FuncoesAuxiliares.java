@@ -10,4 +10,10 @@ public abstract class FuncoesAuxiliares {
 		return num;
 	}
 	
+	public static int ciclo(int cicloAtual, int qtdMaxCiclos) {
+		if(cicloAtual+1>qtdMaxCiclos) 
+			return 0;
+		return cicloAtual+1;
+	}
+	
 }
