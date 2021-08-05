@@ -31,6 +31,18 @@ public class Entradas extends KeyAdapter {
             if(e.getKeyCode() == KeyEvent.VK_SPACE) {
             	logica.clicar(' ');
             }
+            if(e.getKeyCode() == 39) {
+            	logica.clicar('d');
+            }
+            if(e.getKeyCode() == 37) {
+            	logica.clicar('a');
+            }
+            if(e.getKeyCode() == 38) {
+            	logica.clicar('w');
+            }
+            if(e.getKeyCode() == 40) {
+            	logica.clicar('s');
+            }
             pressionados[e.getKeyCode()]=true;
     	}
     }
@@ -52,6 +64,19 @@ public class Entradas extends KeyAdapter {
         if(e.getKeyCode() == KeyEvent.VK_SPACE) {
         	logica.soltar(' ');
         }
+        if(e.getKeyCode() == 39) {
+        	logica.soltar('d');
+        }
+        if(e.getKeyCode() == 37) {
+        	logica.soltar('a');
+        }
+        if(e.getKeyCode() == 38) {
+        	logica.soltar('w');
+        }
+        if(e.getKeyCode() == 40) {
+        	logica.soltar('s');
+        }
+        
     }
     
 }

@@ -39,4 +39,6 @@ public class Manipulador{
 	public int getLargura() {return this.largJanela;}
 	
 	public Mago getJogador() {return this.jogador;}
+
+	public Objetos getAdversario() {return this.adversario;}
 }
