@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 public class Desenho extends JPanel{
 	private static final long serialVersionUID = 1L;
-	Jogo jogo;
+	private Jogo jogo;
 	
 	public Desenho(Jogo jogo)
 	{

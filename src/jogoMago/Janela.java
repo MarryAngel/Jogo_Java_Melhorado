@@ -17,7 +17,6 @@ public class Janela extends JFrame{
 		add(des);                           
 		pack();				       	    
 		setVisible(true);
-		des.repaint();
 	}
 	
 }
