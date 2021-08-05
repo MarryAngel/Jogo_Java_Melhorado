@@ -11,34 +11,35 @@ public class Logica {
 		 switch(botao) {
 		 case 'D':
 			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()+10);
-			 manipulador.getJogador().setDir(false);
 			 break;
 		 case 'A':
 			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()-10);
-			 manipulador.getJogador().setDir(true);
 			 break;
 		 case 'W':
-			 manipulador.getJogador().setVelY(-20);
+			 manipulador.getJogador().pular();
 			 break;
 		 case 'S':
-			 System.out.println("apertei S");
+			 manipulador.getJogador().abaixar();
 			 break;
 		 case ' ':
-			 System.out.println("apertei SPACE");
+			 manipulador.getJogador().atacar();
 			 break;
 		 case 'd':
 			 manipulador.getAdversario().setVelX(manipulador.getAdversario().getVelX()+10);
-			 manipulador.getAdversario().setDir(false);
 			 break;
 		 case 'a':
 			 manipulador.getAdversario().setVelX(manipulador.getAdversario().getVelX()-10);
-			 manipulador.getAdversario().setDir(true);
 			 break;
 		 case 'w':
-			 manipulador.getAdversario().setVelY(-20);
+			 manipulador.getAdversario().pular();
 			 break;
 		 case 's':
-			 System.out.println("apertei s");
+			 manipulador.getAdversario().abaixar();
+			 break;
+		 case 'c':
+			 manipulador.getAdversario().atacar();
+			 break;
+		 default:
 			 break;
 		 }
 	 }
@@ -52,15 +53,10 @@ public class Logica {
 			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()+10);
 			 break;
 		 case 'W':
-			 System.out.println("soltei W");
 			 break;
 		 case 'S':
-			 System.out.println("soltei S");
+			 manipulador.getJogador().levantar();
 			 break;
-		 case ' ':
-			 System.out.println("soltei SPACE");
-			 break;
-			 
 		 case 'd':
 			 manipulador.getAdversario().setVelX(manipulador.getAdversario().getVelX()-10);
 			 break;
@@ -68,10 +64,11 @@ public class Logica {
 			 manipulador.getAdversario().setVelX(manipulador.getAdversario().getVelX()+10);
 			 break;
 		 case 'w':
-			 System.out.println("soltei w");
 			 break;
 		 case 's':
-			 System.out.println("soltei s");
+			 manipulador.getAdversario().levantar();
+			 break;
+		 default:
 			 break;
 		 }
 	 }

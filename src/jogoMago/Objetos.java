@@ -41,6 +41,8 @@ public abstract class Objetos {
 		if(contador==0)
 			this.frame=FuncoesAuxiliares.ciclo(this.frame, frameMax);
 		this.contador=FuncoesAuxiliares.ciclo(this.contador, velocidadeAnimacao);
+		if(velx!=0)
+			this.invertido=velx<0;
 	}
 	
 	public int getVelX() {return this.velx;}
@@ -58,6 +60,7 @@ public abstract class Objetos {
 			return;
 		this.estado = estado;
 		this.contador=0;
+		this.frame=0;
 	}
 	
 }

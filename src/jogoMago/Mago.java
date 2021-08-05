@@ -18,19 +18,65 @@ public class Mago extends Objetos{
 	
 	public void tick() {
 		super.tick();
-		this.analizarEstado();
+		this.analisarEstado();
+		if(this.estado == "Pula")
+		{
+			if(frame == frameMax)
+				this.setEstado("Parado");
+		}
 	}
 	
-	private void analizarEstado()
+	private void analisarEstado()
 	{
-		if(this.velx != 0)
+		if(this.estado == "Anda" || this.estado == "Parado")
 		{
-			this.setEstado("Anda");
+			if(this.velx != 0)
+			{
+				this.setEstado("Anda");
+			}
+			else
+			{
+				this.setEstado("Parado");
+			}
 		}
-		else
+		if(this.estado=="Abaixado" && this.frame == this.frameMax)
 		{
+			this.contador=velocidadeAnimacao;
+		}
+		
+		if(this.estado=="Ataque" && this.frame == this.frameMax && this.contador == this.velocidadeAnimacao)
+		{
+			this.estado = "Parado";
+			this.frameMax=4;
+			this.frame = 4;
+		}
+	}
+	public void pular()
+	{
+		if(this.estado != "Pula")
+		{
+			this.velocidadeAnimacao=12;
+			setVelY(-20);
+			setEstado("Pula");
+		}
+	}
+	
+	public void abaixar()
+	{
+		if(this.estado != "Ataque")
+			this.setEstado("Abaixado");
+	}
+	
+	public void levantar()
+	{
+		if(this.estado != "Ataque")
 			this.setEstado("Parado");
-		}
+	}
+	
+	public void atacar()
+	{
+		this.frameMax = 6;
+		this.setEstado("Ataque");
 	}
 	
 }

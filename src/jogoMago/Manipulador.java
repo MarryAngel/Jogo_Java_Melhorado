@@ -40,5 +40,5 @@ public class Manipulador{
 	
 	public Mago getJogador() {return this.jogador;}
 
-	public Objetos getAdversario() {return this.adversario;}
+	public Mago getAdversario() {return this.adversario;}
 }
