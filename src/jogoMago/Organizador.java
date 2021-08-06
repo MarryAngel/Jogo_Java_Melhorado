@@ -15,9 +15,15 @@ public class Organizador {
 	
 	public static Image getImagem(String nome, String estado, int frame) throws IOException
 	{
-		if(mapaImagens.get(nome+estado+frame) == null)
-           mapaImagens.put(nome+estado+frame, ImageIO.read(new File(""+caminho+nome+estado+frame+".png")));
-		return mapaImagens.get(nome+estado+frame);
+		
+		try {
+			if(mapaImagens.get(nome+estado+frame) == null)
+			   mapaImagens.put(nome+estado+frame, ImageIO.read(new File(""+caminho+nome+estado+frame+".png")));
+			return mapaImagens.get(nome+estado+frame);
+		} catch (IOException e) {
+			System.out.println("Tentei ler "+nome+estado+frame);
+			return null;
+		}
 	}
 	
 }

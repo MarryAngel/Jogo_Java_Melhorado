@@ -7,6 +7,7 @@ public class Mago extends Objetos{
 	private int vidaMago=400;
 	private CaixaColisao colisao;
 	private CaixaColisao ataque;
+	private boolean morto;
 	
 	public Mago(int x, int y, int larg, int alt, String tipo, Manipulador manipulador){
 		this.x=x;
@@ -19,6 +20,7 @@ public class Mago extends Objetos{
 		this.manipulador=manipulador;
 		this.colisao=new CaixaColisao(x, y, largura, altura);
 		this.ataque=null;
+		this.morto = false;
 		if(tipo=="Gelo")
 			this.invertido=true;
 	}
@@ -64,6 +66,16 @@ public class Mago extends Objetos{
 				this.setEstado("Parado");
 			}
 		}
+		if(this.estado == "Ataque"){
+			if(frame <4)
+			{
+				this.ataque = null;
+			}
+		}
+		else
+		{
+			this.ataque = null;
+		}
 		
 		if(this.ataque !=null)
 		{
@@ -72,7 +84,10 @@ public class Mago extends Objetos{
 			else
 				this.ataque.refazer(this.x+this.largura+50,this.y+30,100,140);
 		}
-		
+		if(this.vidaMago==0)
+		{
+			this.morto = true;
+		}
 	}
 	
 	private void analisarEstado(){
@@ -149,12 +164,14 @@ public class Mago extends Objetos{
 		this.estado = "Machucado";
 		this.frameMax = 4;
 		this.velocidadeAnimacao = 6;
-		this.vidaMago-=1;
+		this.vidaMago=FuncoesAuxiliares.prendedor(vidaMago-2,0,400);
 	}
 	
 	public boolean estaAbaixado()
 	{
 		return (this.estado == "Abaixado" && this.frame>2);
 	}
+	
+	public boolean getMorto() {return this.morto;}
 	
 }

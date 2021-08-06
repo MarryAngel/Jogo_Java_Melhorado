@@ -25,7 +25,11 @@ public class Manipulador{
 	
 	public void render(Graphics g){
 		for(int i=0; i<objJogo.size(); i++){
-			objJogo.get(i).render(g);
+			try {
+				objJogo.get(i).render(g);
+			} catch (Exception e) {
+				continue;
+			}
 		}
 	}
 	

@@ -22,7 +22,6 @@ public abstract class Objetos {
 		try {
 			return Organizador.getImagem(nome,estado,frame);
 		} catch (IOException e) {
-			e.printStackTrace();
 			return null;
 		}
 	}

@@ -7,6 +7,11 @@ public class Logica {
 		this.manipulador=manipulador;
 	}
 	
+	public void resetManipulador(Manipulador manipulador)
+	{
+		this.manipulador=manipulador;
+	}
+	
 	 public void clicar(char botao) {
 		 switch(botao) {
 		 case 'D':
@@ -103,6 +108,14 @@ public class Logica {
 					 manipulador.getJogador().machucar();
 				 }
 			 }
+		 }
+		 if(manipulador.getJogador().getMorto())
+		 {
+			 throw new GeloWin();
+		 }
+		 if(manipulador.getAdversario().getMorto())
+		 {
+			 throw new FogoWin();
 		 }
 	 }
 	 
