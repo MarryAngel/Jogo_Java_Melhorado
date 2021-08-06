@@ -3,6 +3,7 @@ package jogoMago;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+//import java.net.Socket;
 
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
@@ -50,5 +51,15 @@ public class Jogo
 		this.manipulador.render(g);
 		
 	}
+
+//	public int numMaximoJogadores() {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
+//
+//	public void adicionaJogador(Socket clientSocket) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 }

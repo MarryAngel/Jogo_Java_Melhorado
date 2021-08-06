@@ -1,10 +1,32 @@
 package jogoMago;
 
+import java.io.PrintStream;
+import java.util.Scanner;
+
 public class Logica {
 	private Manipulador manipulador;
+	private String comandos;
 	
 	public Logica(Manipulador manipulador) {
 		this.manipulador=manipulador;
+		comandos = "";
+	}
+	
+	public void executar(String comandos)
+	{
+		for(int i = 0;i<comandos.length();i++)
+		{
+			if(comandos.charAt(i)==',' || comandos.charAt(i)=='\n')
+			{
+				continue;
+			}
+			if(comandos.charAt(i)=='!')
+			{
+				this.soltar(comandos.charAt(i+1),false);
+				continue;
+			}
+			this.clicar(comandos.charAt(i),false);
+		}
 	}
 	
 	public void resetManipulador(Manipulador manipulador)
@@ -12,7 +34,24 @@ public class Logica {
 		this.manipulador=manipulador;
 	}
 	
-	 public void clicar(char botao) {
+	private void adicionarComando(String string)
+	{
+		if(this.comandos != "")
+			this.comandos+=",";
+		this.comandos+=string;
+	}
+	
+	public String getComandos(boolean zerar)
+	{
+		String retorno = this.comandos;
+		if(zerar)
+			this.comandos = "";
+		return retorno;
+	}
+	
+	 public void clicar(char botao,boolean anotar) {
+		 if(anotar)
+			 this.adicionarComando(""+botao);
 		 switch(botao) {
 		 case 'D':
 			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()+10);
@@ -26,7 +65,7 @@ public class Logica {
 		 case 'S':
 			 manipulador.getJogador().abaixar();
 			 break;
-		 case ' ':
+		 case 'E':
 			 manipulador.getJogador().atacar();
 			 break;
 		 case 'd':
@@ -52,7 +91,9 @@ public class Logica {
 		 }
 	 }
 	 
-	 public void soltar(char botao) {
+	 public void soltar(char botao, boolean anotar) {
+		 if(anotar)
+			 this.adicionarComando("!"+botao);
 		 switch(botao) {
 		 case 'D':
 			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()-10);
@@ -65,7 +106,7 @@ public class Logica {
 		 case 'S':
 			 manipulador.getJogador().levantar();
 			 break;
-		 case ' ':
+		 case 'E':
 			 manipulador.getJogador().pararAtacar();
 			 break;
 		 case 'd':
@@ -118,5 +159,15 @@ public class Logica {
 			 throw new FogoWin();
 		 }
 	 }
+
+	public void entradaSaida(Scanner entrada, PrintStream saida) {
+		while(entrada.hasNextLine())
+		{
+			String linha = entrada.nextLine();
+			this.executar(linha);
+		}
+		saida.println(this.comandos);
+		saida.flush();
+	}
 	 
 }
