@@ -39,6 +39,9 @@ public class Logica {
 		 case 'c':
 			 manipulador.getAdversario().atacar();
 			 break;
+		 case 'j':
+			 manipulador.alternarDebug();
+			 break;
 		 default:
 			 break;
 		 }
@@ -57,6 +60,9 @@ public class Logica {
 		 case 'S':
 			 manipulador.getJogador().levantar();
 			 break;
+		 case ' ':
+			 manipulador.getJogador().pararAtacar();
+			 break;
 		 case 'd':
 			 manipulador.getAdversario().setVelX(manipulador.getAdversario().getVelX()-10);
 			 break;
@@ -68,13 +74,36 @@ public class Logica {
 		 case 's':
 			 manipulador.getAdversario().levantar();
 			 break;
+		 case 'c':
+			 manipulador.getAdversario().pararAtacar();
+			 break;
 		 default:
 			 break;
 		 }
 	 }
 
 	 public void danificar() {
-		 
+		 if(manipulador.getJogador().estaAtacando())
+		 {
+			 if(FuncoesAuxiliares.colideRecRec(manipulador.getJogador().getAtaque(),manipulador.getAdversario().getColisao()))
+			 {
+				 if(!manipulador.getAdversario().estaAbaixado())
+				 {
+					 manipulador.getAdversario().machucar();
+				 }
+				 
+			 }
+		 }
+		 if(manipulador.getAdversario().estaAtacando())
+		 {
+			 if(FuncoesAuxiliares.colideRecRec(manipulador.getAdversario().getAtaque(),manipulador.getJogador().getColisao()))
+			 {
+				 if(!manipulador.getJogador().estaAbaixado())
+				 {
+					 manipulador.getJogador().machucar();
+				 }
+			 }
+		 }
 	 }
 	 
 }

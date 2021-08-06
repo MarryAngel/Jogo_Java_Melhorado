@@ -32,6 +32,7 @@ public class Jogo
 	private void tick(){
 		this.manipulador.tick();
 		this.janela.repaint();
+		this.logica.danificar();
 	}
 	
 	public void render(Graphics g){
