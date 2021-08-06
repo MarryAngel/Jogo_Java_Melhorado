@@ -1,4 +1,4 @@
-package jogoMago;
+package jogoMagoRede;
 
 public abstract class FuncoesAuxiliares {
 	

@@ -1,4 +1,4 @@
-package jogoMago;
+package jogoMagoRede;
 
 import java.io.PrintStream;
 import java.util.Scanner;

@@ -1,9 +1,12 @@
-package jogoMago;
+package jogoMagoRede;
 
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//import java.net.Socket;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
@@ -16,8 +19,24 @@ public class Jogo
 	private Manipulador manipulador;
 	private Logica logica;
 	
-	public Jogo(){
+	private DataOutputStream[] os;
+	private DataInputStream[] is;
+	private int nJogadores=0;;
+	
+	
+	public Jogo(int numMaximoJogadores){
+		os = new DataOutputStream[numMaximoJogadores];
+	    is = new DataInputStream[numMaximoJogadores];
+	    jogadores = new Jogador[numMaximoJogadores];
+	}
+	
+	public void iniciaLogica() {
 		this.manipulador = new Manipulador(largJanela, altJanela);
+		this.logica = new Logica(this.manipulador);
+	}
+	
+	public void inicia()
+	{
 		this.logica = new Logica(this.manipulador);
 		this.janela = new Janela(largJanela, altJanela, this);
 		this.janela.addKeyListener(new Entradas(logica));
@@ -52,14 +71,16 @@ public class Jogo
 		
 	}
 
-//	public int numMaximoJogadores() {
-//		// TODO Auto-generated method stub
-//		return 0;
-//	}
-//
-//	public void adicionaJogador(Socket clientSocket) {
-//		// TODO Auto-generated method stub
-//		
-//	}
+	public void adicionaJogador(Socket clientSocket) {
+		try {
+			os[nJogadores] = new DataOutputStream(clientSocket.getOutputStream());
+			is[nJogadores] = new DataInputStream(clientSocket.getInputStream());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+
 
 }

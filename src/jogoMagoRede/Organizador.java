@@ -1,4 +1,4 @@
-package jogoMago;
+package jogoMagoRede;
 
 import java.awt.Image;
 import java.io.File;
