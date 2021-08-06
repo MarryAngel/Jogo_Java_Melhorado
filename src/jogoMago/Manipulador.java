@@ -8,6 +8,7 @@ public class Manipulador{
 	private LinkedList<Objetos> objJogo = new LinkedList<Objetos>();
 	private Mago jogador;
 	private Mago adversario;
+	private boolean debug=false;
 	
 	public Manipulador(int largJanela, int altJanela){
 		this.largJanela=largJanela;
@@ -24,7 +25,11 @@ public class Manipulador{
 	
 	public void render(Graphics g){
 		for(int i=0; i<objJogo.size(); i++){
-			objJogo.get(i).render(g);
+			try {
+				objJogo.get(i).render(g);
+			} catch (Exception e) {
+				continue;
+			}
 		}
 	}
 	
@@ -41,4 +46,8 @@ public class Manipulador{
 	public Mago getJogador() {return this.jogador;}
 
 	public Mago getAdversario() {return this.adversario;}
+
+	public void alternarDebug() {this.debug = !this.debug;}
+	
+	public boolean isDebug() {return this.debug;}
 }

@@ -49,6 +49,9 @@ public class Entradas extends KeyAdapter {
             if(e.getKeyCode() == KeyEvent.VK_C) {
             	logica.clicar('c');
             }
+            if(e.getKeyCode() == KeyEvent.VK_J) {
+            	logica.clicar('j');
+            }
             pressionados[e.getKeyCode()]=true;
     	}
     }
@@ -81,6 +84,12 @@ public class Entradas extends KeyAdapter {
         }
         if(e.getKeyCode() == 40) {
         	logica.soltar('s');
+        }
+        if(e.getKeyCode() == 16) {
+        	logica.soltar('c');
+        }
+        if(e.getKeyCode() == KeyEvent.VK_C) {
+        	logica.soltar('c');
         }
         
     }

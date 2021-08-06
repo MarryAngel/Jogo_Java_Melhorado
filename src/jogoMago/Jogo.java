@@ -1,10 +1,10 @@
 package jogoMago;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 public class Jogo
@@ -32,8 +32,20 @@ public class Jogo
 	private void tick(){
 		this.manipulador.tick();
 		this.janela.repaint();
+		try {
+			this.logica.danificar();
+		} catch (Fim e) {
+			JOptionPane.showMessageDialog(janela, e);
+			this.reset();
+		}
 	}
 	
+	private void reset() {
+		this.manipulador = new Manipulador(largJanela, altJanela);
+		logica.resetManipulador(this.manipulador);
+		
+	}
+
 	public void render(Graphics g){
 		this.manipulador.render(g);
 		
