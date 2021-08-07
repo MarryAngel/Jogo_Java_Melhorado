@@ -40,10 +40,11 @@ public class JogoServidor {
 	serverSocket = ligarServidor(porta);
 	
 	int numMaximoJogadores = 2;
-	Jogo jogo = new Jogo(numMaximoJogadores);
+	Jogo jogo = new Jogo(numMaximoJogadores, false);
 	receberClientes(numMaximoJogadores,serverSocket,jogo);
 	jogo.iniciaLogica();
 	jogo.inicia();
+	
 	try {
 		serverSocket.close();
 	} catch (IOException e) {

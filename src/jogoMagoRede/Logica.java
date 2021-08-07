@@ -51,7 +51,10 @@ public class Logica {
 	
 	 public void clicar(char botao,boolean anotar) {
 		 if(anotar)
+		 {
 			 this.adicionarComando(""+botao);
+			 return;
+		 }
 		 switch(botao) {
 		 case 'D':
 			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()+10);
@@ -93,7 +96,10 @@ public class Logica {
 	 
 	 public void soltar(char botao, boolean anotar) {
 		 if(anotar)
+		 {
 			 this.adicionarComando("!"+botao);
+			 return;
+		 }
 		 switch(botao) {
 		 case 'D':
 			 manipulador.getJogador().setVelX(manipulador.getJogador().getVelX()-10);

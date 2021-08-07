@@ -3,15 +3,15 @@ package jogoMagoRede;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.net.Socket;
+import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
-public class Jogo
+public class Jogo extends Thread
 {
 	private int altJanela=1080*3/5, largJanela=altJanela/9*16;
 	private Timer t;
@@ -19,14 +19,17 @@ public class Jogo
 	private Manipulador manipulador;
 	private Logica logica;
 	
-	private DataOutputStream[] os;
-	private DataInputStream[] is;
+	private PrintStream[] os;
+	private Scanner[] is;
 	private int nJogadores=0;;
+	private boolean rodando = true;
+	private boolean cliente;
 	
 	
-	public Jogo(int numMaximoJogadores){
-		os = new DataOutputStream[numMaximoJogadores];
-	    is = new DataInputStream[numMaximoJogadores];
+	public Jogo(int numMaximoJogadores, boolean cliente){
+		os = new PrintStream[numMaximoJogadores];
+	    is = new Scanner[numMaximoJogadores];
+	    this.cliente = cliente;
 	}
 	
 	public void iniciaLogica() {
@@ -36,9 +39,11 @@ public class Jogo
 	
 	public void inicia()
 	{
-		this.logica = new Logica(this.manipulador);
-		this.janela = new Janela(largJanela, altJanela, this);
-		this.janela.addKeyListener(new Entradas(logica));
+		if(cliente)
+		{
+			this.janela = new Janela(largJanela, altJanela, this);
+			this.janela.addKeyListener(new Entradas(logica));
+		}
 		
 		t = new Timer(10, new ActionListener() {
 	    	public void actionPerformed(ActionEvent ae) {
@@ -46,6 +51,27 @@ public class Jogo
 	    	} 	
 	    });
 		t.start();
+		
+		for(int i =0;i<this.nJogadores;i++)
+		{
+			this.run(i);
+		}
+		
+		while(rodando)
+		{
+			String comandos = logica.getComandos(true);
+			for(int i =0;i<this.nJogadores;i++)
+			{
+				os[i].println(comandos);
+			}
+		}
+	}
+	
+	public void run(int numJogador) {
+		while(rodando)
+		{
+			logica.executar(is[numJogador].nextLine());
+		}
 	}
 	
 	private void tick(){
@@ -72,14 +98,18 @@ public class Jogo
 
 	public void adicionaJogador(Socket clientSocket) {
 		try {
-			os[nJogadores] = new DataOutputStream(clientSocket.getOutputStream());
-			is[nJogadores] = new DataInputStream(clientSocket.getInputStream());
+			os[nJogadores] = new PrintStream(clientSocket.getOutputStream());
+			is[nJogadores] = new Scanner(clientSocket.getInputStream());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
 	}
 
+	public boolean getRodando()
+	{
+		return this.rodando;
+	}
 
 
 }
