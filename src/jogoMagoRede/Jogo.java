@@ -41,12 +41,10 @@ public class Jogo extends Thread
 	public void inicia()
 	{
 		String titulo = "A Grande Batalha";
-		if(!cliente)
-			titulo = "A Grande Batalha servidor";
-		this.janela = new Janela(largJanela, altJanela, this, titulo);
+		
 		if(cliente)
 		{
-			
+			this.janela = new Janela(largJanela, altJanela, this, titulo);
 			this.janela.addKeyListener(new Entradas(logica));
 		}
 		
@@ -91,7 +89,7 @@ public class Jogo extends Thread
 					if(!comando.equals(""))
 						System.out.println("comando lido:"+comando+".");
 					//System.out.println(comando);
-					logica.executar(comando,(cliente));
+					logica.executar(comando,(!cliente));
 				} catch (Exception e) {
 					rodando = false;
 				}
@@ -105,7 +103,7 @@ public class Jogo extends Thread
 	
 	private void tick(){
 		this.manipulador.tick();
-		//if(cliente)
+		if(cliente)
 			this.janela.repaint();
 		try {
 			this.logica.danificar();
