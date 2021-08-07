@@ -9,9 +9,10 @@ public class Logica implements ILogica{
 		comandos = "";
 	}
 	
-	public void executar(String comandos, boolean anotar)
+	public void executar(String comandos, boolean anotar, int nJogador)
 	{
 		System.out.println("ignorar: "+anotar);
+		char comando = 'a';
 		for(int i = 0;i<comandos.length();i++)
 		{
 			if(comandos.charAt(i)==',' || comandos.charAt(i)=='\n')
@@ -20,19 +21,30 @@ public class Logica implements ILogica{
 			}
 			if(comandos.charAt(i)=='!')
 			{
-				System.out.println("soltando "+comandos.charAt(i+1));
-				this.soltar(comandos.charAt(i+1),anotar);
+				comando = comandos.charAt(i+1);
+				if(anotar)
+				{
+					if(nJogador % 2 ==0)
+						comando = Character.toUpperCase(comando);
+					else
+						comando = Character.toLowerCase(comando);
+				}
+				System.out.println("soltando "+comando);
+				this.soltar(comando,anotar);
 				i++;
 				continue;
 			}
-			System.out.println("clicando "+comandos.charAt(i));
-			this.clicar(comandos.charAt(i),anotar);
+			comando = comandos.charAt(i);
+			if(anotar)
+			{
+				if(nJogador % 2 ==0)
+					comando = Character.toUpperCase(comando);
+				else
+					comando = Character.toLowerCase(comando);
+			}
+			System.out.println("clicando "+comando);
+			this.clicar(comando,anotar);
 		}
-	}
-	
-	public void resetManipulador(Manipulador manipulador)
-	{
-		this.manipulador=manipulador;
 	}
 	
 	private void adicionarComando(String string)

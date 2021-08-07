@@ -35,7 +35,7 @@ public class JogoServidor {
 	
   public static void main(String[] args) {
 	ServerSocket serverSocket = null;
-	int porta = 25582;
+	int porta = 25581;
 
 	serverSocket = ligarServidor(porta);
 	
@@ -44,7 +44,7 @@ public class JogoServidor {
 	receberClientes(numMaximoJogadores,serverSocket,jogo);
 	jogo.iniciaLogica();
 	jogo.inicia();
-	System.out.println("desligando");
+	System.out.println("Desligando");
 	try {
 		serverSocket.close();
 	} catch (IOException e) {

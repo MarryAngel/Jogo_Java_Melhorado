@@ -77,7 +77,7 @@ public class JogoCliente {
 	
   public static void main(String[] args) {
 	Socket cliente = null;
-	int porta = 25582;
+	int porta = 25581;
 	String ip = "127.0.0.1";
 
 	cliente = iniciarCliente(ip,porta);

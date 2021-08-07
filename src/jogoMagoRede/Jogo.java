@@ -89,7 +89,7 @@ public class Jogo extends Thread implements IJogo
 					if(!comando.equals(""))
 						System.out.println("comando lido:"+comando+".");
 					//System.out.println(comando);
-					logica.executar(comando,(!cliente));
+					logica.executar(comando,(!cliente),numJogador);
 				} catch (Exception e) {
 					rodando = false;
 				}
@@ -109,14 +109,9 @@ public class Jogo extends Thread implements IJogo
 			this.logica.danificar();
 		} catch (Fim e) {
 			JOptionPane.showMessageDialog(janela, e);
-			this.reset();
+			rodando = false;
+			System.exit(1);
 		}
-	}
-	
-	private void reset() {
-		this.manipulador = new Manipulador(largJanela, altJanela);
-		logica.resetManipulador(this.manipulador);
-		
 	}
 
 	public void render(Graphics g){
