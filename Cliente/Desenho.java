@@ -1,5 +1,3 @@
-package jogoMagoRede;
-
 import java.awt.Graphics;
 import java.awt.Toolkit;
 

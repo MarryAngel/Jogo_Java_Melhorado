@@ -1,5 +1,3 @@
-package jogoMagoRede;
-
 public class Fundo extends Objetos{
 	public Fundo(int x, int y, int larg, int alt, Manipulador manipulador){
 		this.x=x;

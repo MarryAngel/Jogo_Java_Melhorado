@@ -1,5 +1,3 @@
-package jogoMagoRede;
-
 import java.awt.Dimension;
 import javax.swing.*;
 

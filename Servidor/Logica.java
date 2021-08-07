@@ -1,5 +1,3 @@
-package jogoMagoRede;
-
 public class Logica implements ILogica{
 	private Manipulador manipulador;
 	private String comandos;

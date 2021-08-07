@@ -1,5 +1,3 @@
-package jogoMagoRede;
-
 import java.net.Socket;
 
 public interface IJogo {

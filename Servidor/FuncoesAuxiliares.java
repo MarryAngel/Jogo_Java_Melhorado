@@ -1,5 +1,3 @@
-package jogoMagoRede;
-
 public abstract class FuncoesAuxiliares {
 	
 	public static int prendedor(int num, int min, int max) {

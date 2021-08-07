@@ -1,5 +1,3 @@
-package jogoMagoRede;
-
 public interface ILogica {
 
 	public String getComandos(boolean b);
