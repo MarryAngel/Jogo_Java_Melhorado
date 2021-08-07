@@ -8,8 +8,8 @@ public class Janela extends JFrame{
 	
 	private Desenho des;
 	
-	public Janela(int LARGURA, int ALTURA, Jogo jogo){
-		super("A Grande Batalha");
+	public Janela(int LARGURA, int ALTURA, Jogo jogo,String titulo){
+		super(titulo);//"A Grande Batalha"
 		des = new Desenho(jogo);
 		this.setPreferredSize(new Dimension(LARGURA,ALTURA));
 		this.setResizable(false);

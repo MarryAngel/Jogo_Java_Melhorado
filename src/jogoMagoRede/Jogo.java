@@ -40,9 +40,13 @@ public class Jogo extends Thread
 	
 	public void inicia()
 	{
+		String titulo = "A Grande Batalha";
+		if(!cliente)
+			titulo = "A Grande Batalha servidor";
+		this.janela = new Janela(largJanela, altJanela, this, titulo);
 		if(cliente)
 		{
-			this.janela = new Janela(largJanela, altJanela, this);
+			
 			this.janela.addKeyListener(new Entradas(logica));
 		}
 		
@@ -61,11 +65,15 @@ public class Jogo extends Thread
 		while(rodando)
 		{
 			String comandos = logica.getComandos(true);
+			System.out.print(comandos);
 			if(!comandos.equals(""))
-				System.out.println("comandos:"+comandos+".");
-			for(int i =0;i<this.nJogadores;i++)
 			{
-				os[i].println(comandos);
+					System.out.println("comandos passados:"+comandos+".");
+				for(int i =0;i<this.nJogadores;i++)
+				{
+					System.out.println("passando comando:"+comandos+".");
+					os[i].println(comandos);
+				}
 			}
 		}
 		t.stop();
@@ -80,8 +88,10 @@ public class Jogo extends Thread
 	  		{
 				try {
 					String comando = is[numJogador].nextLine();
+					if(!comando.equals(""))
+						System.out.println("comando lido:"+comando+".");
 					//System.out.println(comando);
-					logica.executar(comando,cliente);
+					logica.executar(comando,(cliente));
 				} catch (Exception e) {
 					rodando = false;
 				}
@@ -95,7 +105,8 @@ public class Jogo extends Thread
 	
 	private void tick(){
 		this.manipulador.tick();
-		if(cliente) this.janela.repaint();
+		//if(cliente)
+			this.janela.repaint();
 		try {
 			this.logica.danificar();
 		} catch (Fim e) {

@@ -15,7 +15,6 @@ public class Entradas extends KeyAdapter {
     }
     
     public void keyPressed(KeyEvent e) {
-    	System.out.println(e);
         if(!pressionados[e.getKeyCode()]) {
             if(e.getKeyCode() == KeyEvent.VK_D) {
                 logica.clicar('D',true);

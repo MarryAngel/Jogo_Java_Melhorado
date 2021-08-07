@@ -12,8 +12,9 @@ public class Logica {
 		comandos = "";
 	}
 	
-	public void executar(String comandos, boolean ignorar)
+	public void executar(String comandos, boolean anotar)
 	{
+		System.out.println("ignorar: "+anotar);
 		for(int i = 0;i<comandos.length();i++)
 		{
 			if(comandos.charAt(i)==',' || comandos.charAt(i)=='\n')
@@ -22,10 +23,13 @@ public class Logica {
 			}
 			if(comandos.charAt(i)=='!')
 			{
-				this.soltar(comandos.charAt(i+1),ignorar);
+				System.out.println("soltando "+comandos.charAt(i+1));
+				this.soltar(comandos.charAt(i+1),anotar);
+				i++;
 				continue;
 			}
-			this.clicar(comandos.charAt(i),ignorar);
+			System.out.println("clicando "+comandos.charAt(i));
+			this.clicar(comandos.charAt(i),anotar);
 		}
 	}
 	
@@ -36,9 +40,11 @@ public class Logica {
 	
 	private void adicionarComando(String string)
 	{
+		System.out.println("adicionando comando");
 		if(this.comandos != "")
 			this.comandos+=",";
 		this.comandos+=string;
+		System.out.println("comando adicionado");
 	}
 	
 	public String getComandos(boolean zerar)
@@ -46,10 +52,12 @@ public class Logica {
 		String retorno = this.comandos;
 		if(zerar)
 			this.comandos = "";
+		
 		return retorno;
 	}
 	
 	 public void clicar(char botao,boolean anotar) {
+		 System.out.println("clicado "+botao+" anotar: "+anotar);
 		 if(anotar)
 		 {
 			 this.adicionarComando(""+botao);
@@ -95,6 +103,7 @@ public class Logica {
 	 }
 	 
 	 public void soltar(char botao, boolean anotar) {
+		 System.out.println("soltado "+botao+" anotar: "+anotar);
 		 if(anotar)
 		 {
 			 this.adicionarComando("!"+botao);
