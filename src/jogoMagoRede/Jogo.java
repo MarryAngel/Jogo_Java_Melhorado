@@ -27,7 +27,6 @@ public class Jogo
 	public Jogo(int numMaximoJogadores){
 		os = new DataOutputStream[numMaximoJogadores];
 	    is = new DataInputStream[numMaximoJogadores];
-	    jogadores = new Jogador[numMaximoJogadores];
 	}
 	
 	public void iniciaLogica() {
