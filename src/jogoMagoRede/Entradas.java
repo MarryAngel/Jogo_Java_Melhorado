@@ -5,11 +5,11 @@ import java.awt.event.KeyEvent;
 import java.util.Arrays;
 
 public class Entradas extends KeyAdapter {
-    private Logica logica;
+    private ILogica logica;
     private boolean pressionados[] = new boolean[256];
     
     
-    public Entradas(Logica logica) {
+    public Entradas(ILogica logica) {
         this.logica=logica;
         Arrays.fill(pressionados, false);
     }

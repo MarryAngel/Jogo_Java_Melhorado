@@ -11,13 +11,13 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
-public class Jogo extends Thread
+public class Jogo extends Thread implements IJogo
 {
 	private int altJanela=1080*3/5, largJanela=altJanela/9*16;
 	private Timer t;
 	private Janela janela;
 	private Manipulador manipulador;
-	private Logica logica;
+	private ILogica logica;
 	
 	private PrintStream[] os;
 	private Scanner[] is;

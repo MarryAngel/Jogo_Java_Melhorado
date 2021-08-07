@@ -1,9 +1,6 @@
 package jogoMagoRede;
 
-import java.io.PrintStream;
-import java.util.Scanner;
-
-public class Logica {
+public class Logica implements ILogica{
 	private Manipulador manipulador;
 	private String comandos;
 	

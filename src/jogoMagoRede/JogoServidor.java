@@ -17,7 +17,7 @@ public class JogoServidor {
 		return serverSocket;
 	}
 	
-	private static void receberClientes(int numMaximoJogadores,ServerSocket serverSocket,Jogo jogo)
+	private static void receberClientes(int numMaximoJogadores,ServerSocket serverSocket,IJogo jogo)
 	{
 		for (int i = 0; i < numMaximoJogadores; i++) {
 	        Socket clientSocket = null;
@@ -40,7 +40,7 @@ public class JogoServidor {
 	serverSocket = ligarServidor(porta);
 	
 	int numMaximoJogadores = 2;
-	Jogo jogo = new Jogo(numMaximoJogadores, false);
+	IJogo jogo = new Jogo(numMaximoJogadores, false);
 	receberClientes(numMaximoJogadores,serverSocket,jogo);
 	jogo.iniciaLogica();
 	jogo.inicia();
