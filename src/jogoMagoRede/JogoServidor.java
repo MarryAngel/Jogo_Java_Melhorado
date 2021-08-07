@@ -44,7 +44,7 @@ public class JogoServidor {
 	receberClientes(numMaximoJogadores,serverSocket,jogo);
 	jogo.iniciaLogica();
 	jogo.inicia();
-	
+	System.out.println("desligando");
 	try {
 		serverSocket.close();
 	} catch (IOException e) {

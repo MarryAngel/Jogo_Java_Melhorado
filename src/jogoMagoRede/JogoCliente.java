@@ -53,6 +53,7 @@
 
 package jogoMagoRede;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -86,6 +87,15 @@ public class JogoCliente {
 	jogo.adicionaJogador(cliente);
 	jogo.iniciaLogica();
 	jogo.inicia();
+	
+	
+	try {
+		PrintStream escrever = new PrintStream(cliente.getOutputStream());
+		escrever.println("close");
+	} catch (IOException e1) {
+		e1.printStackTrace();
+	}
+	
 	
 	try {
 		cliente.close();

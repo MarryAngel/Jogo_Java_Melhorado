@@ -15,6 +15,7 @@ public class Entradas extends KeyAdapter {
     }
     
     public void keyPressed(KeyEvent e) {
+    	System.out.println(e);
         if(!pressionados[e.getKeyCode()]) {
             if(e.getKeyCode() == KeyEvent.VK_D) {
                 logica.clicar('D',true);
@@ -53,7 +54,7 @@ public class Entradas extends KeyAdapter {
                 logica.clicar('j',true);
             }
             if(e.getKeyCode() == KeyEvent.VK_O) {
-                System.out.println(this.logica.getComandos(true));
+                System.out.println(this.logica.getComandos(false));
             }
             pressionados[e.getKeyCode()]=true;
         }

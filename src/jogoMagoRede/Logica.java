@@ -12,7 +12,7 @@ public class Logica {
 		comandos = "";
 	}
 	
-	public void executar(String comandos)
+	public void executar(String comandos, boolean ignorar)
 	{
 		for(int i = 0;i<comandos.length();i++)
 		{
@@ -22,10 +22,10 @@ public class Logica {
 			}
 			if(comandos.charAt(i)=='!')
 			{
-				this.soltar(comandos.charAt(i+1),false);
+				this.soltar(comandos.charAt(i+1),ignorar);
 				continue;
 			}
-			this.clicar(comandos.charAt(i),false);
+			this.clicar(comandos.charAt(i),ignorar);
 		}
 	}
 	
@@ -165,15 +165,5 @@ public class Logica {
 			 throw new FogoWin();
 		 }
 	 }
-
-	public void entradaSaida(Scanner entrada, PrintStream saida) {
-		while(entrada.hasNextLine())
-		{
-			String linha = entrada.nextLine();
-			this.executar(linha);
-		}
-		saida.println(this.comandos);
-		saida.flush();
-	}
 	 
 }

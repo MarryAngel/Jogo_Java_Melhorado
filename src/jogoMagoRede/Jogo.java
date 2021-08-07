@@ -22,11 +22,12 @@ public class Jogo extends Thread
 	private PrintStream[] os;
 	private Scanner[] is;
 	private int nJogadores=0;;
-	private boolean rodando = true;
+	private static boolean rodando;
 	private boolean cliente;
 	
 	
 	public Jogo(int numMaximoJogadores, boolean cliente){
+		rodando = true;
 		os = new PrintStream[numMaximoJogadores];
 	    is = new Scanner[numMaximoJogadores];
 	    this.cliente = cliente;
@@ -54,29 +55,47 @@ public class Jogo extends Thread
 		
 		for(int i =0;i<this.nJogadores;i++)
 		{
-			this.run(i);
+			iniciaThreadLeitura(i);
 		}
 		
 		while(rodando)
 		{
 			String comandos = logica.getComandos(true);
+			if(!comandos.equals(""))
+				System.out.println("comandos:"+comandos+".");
 			for(int i =0;i<this.nJogadores;i++)
 			{
 				os[i].println(comandos);
 			}
 		}
+		t.stop();
 	}
 	
-	public void run(int numJogador) {
-		while(rodando)
-		{
-			logica.executar(is[numJogador].nextLine());
-		}
-	}
+	void iniciaThreadLeitura(int numDoJogador) {
+	    new Thread(new Runnable() {
+	      int numJogador = numDoJogador;
+
+	      public void run() {
+	  		while(rodando)
+	  		{
+				try {
+					String comando = is[numJogador].nextLine();
+					//System.out.println(comando);
+					logica.executar(comando,cliente);
+				} catch (Exception e) {
+					rodando = false;
+				}
+	  			
+	  		}
+	  		rodando = false;
+	      }
+	    }).start();
+
+	  }
 	
 	private void tick(){
 		this.manipulador.tick();
-		this.janela.repaint();
+		if(cliente) this.janela.repaint();
 		try {
 			this.logica.danificar();
 		} catch (Fim e) {
@@ -103,13 +122,11 @@ public class Jogo extends Thread
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		this.nJogadores++;
+		
 		
 	}
 
-	public boolean getRodando()
-	{
-		return this.rodando;
-	}
 
 
 }
